@@ -1,6 +1,6 @@
 package com.prep.orchestra.api;
 
-import com.prep.orchestra.api.data.Job;
+import com.prep.orchestra.api.data.entities.Job;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,13 +23,13 @@ public class JobsController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Job> getJobById() {
-        return ResponseEntity<Job>
+    public ResponseEntity<Job> getJobById(@RequestParam Integer id)  {
+        return null;
     }
 
     @GetMapping
     public ResponseEntity<ArrayList<Job>> getJobs() {
-
+        return null;
     }
 
 }

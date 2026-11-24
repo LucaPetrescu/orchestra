@@ -1,10 +1,9 @@
-package com.prep.orchestra.api.data;
+package com.prep.orchestra.api.data.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tenants")
