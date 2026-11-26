@@ -7,6 +7,9 @@ import com.prep.orchestra.api.data.responses.JobResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 @Service
 public class JobService {
 
@@ -20,5 +23,15 @@ public class JobService {
     public JobResponse create(JobRequest request) {
         Job saved = jobRepository.save(new Job(request.jobType(), request.jobStatus()));
         return JobResponse.from(saved);
+    }
+
+    @Transactional
+    public JobResponse findById(Long id) {
+        return jobRepository.findById(id).map(JobResponse::from).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Transactional
+    public List<JobResponse> findAll() {
+        return jobRepository.findAll().stream().map(JobResponse::from).toList();
     }
 }
