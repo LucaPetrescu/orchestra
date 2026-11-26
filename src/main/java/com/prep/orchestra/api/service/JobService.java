@@ -30,8 +30,10 @@ public class JobService {
         return jobRepository.findById(id).map(JobResponse::from).orElseThrow(NoSuchElementException::new);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<JobResponse> findAll() {
-        return jobRepository.findAll().stream().map(JobResponse::from).toList();
+        return jobRepository.findAll().stream()
+                .map(JobResponse::from)
+                .toList();
     }
 }
